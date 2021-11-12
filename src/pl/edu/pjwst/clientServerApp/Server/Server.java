@@ -1,6 +1,6 @@
 package pl.edu.pjwst.clientServerApp.Server;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -24,6 +24,13 @@ public class Server {
         int clientPort = clientSocket.getPort();
         log(String.format("Client connected from %s:%d" + System.lineSeparator(), clientIp, clientPort));
 
+        InputStream is = clientSocket.getInputStream();
+        OutputStream os = clientSocket.getOutputStream();
+        InputStreamReader isr = new InputStreamReader(is);
+        OutputStreamWriter osw = new OutputStreamWriter(os);
+        BufferedReader br = new BufferedReader(isr);
+        BufferedWriter bw = new BufferedWriter(osw);
+        log("Stream collected");
 
 
         log("Closing client socket");
