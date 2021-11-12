@@ -47,6 +47,8 @@ public class Server {
         } while (!"QUIT".equals(request));
 
 
+        bw.close();
+        br.close();
         log("Closing client socket");
         clientSocket.close();
         log("Client socket closed");
