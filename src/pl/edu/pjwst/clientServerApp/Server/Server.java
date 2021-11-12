@@ -32,6 +32,20 @@ public class Server {
         BufferedWriter bw = new BufferedWriter(osw);
         log("Stream collected");
 
+        String request = br.readLine();
+        log("Request " + request);
+
+        if("LOGIN".equals(request)) {
+            bw.write("ACK");
+            bw.newLine();
+            bw.flush();
+        }
+
+        do {
+            request = br.readLine();
+            log("Req: " + request);
+        } while (!"QUIT".equals(request));
+
 
         log("Closing client socket");
         clientSocket.close();
