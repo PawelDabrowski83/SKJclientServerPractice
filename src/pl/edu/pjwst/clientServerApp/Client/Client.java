@@ -47,6 +47,9 @@ public class Client {
             bw.flush();
         }
 
+        bw.close();
+        br.close();
+
         log("Client port closing");
         clientSocket.close();
         log("Client port closed");
